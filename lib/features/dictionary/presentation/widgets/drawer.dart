@@ -1,9 +1,11 @@
+import 'package:dictionary_app/features/dictionary/presentation/pages/network_dictionary_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/data/service_locator.dart';
 import '../../../create_pdf/presentaion/bloc/pdf_bloc.dart';
 import '../../../create_pdf/presentaion/create_pdf_page.dart';
+import '../../../local_dictionary/presentation/local_dictionary_page.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -20,32 +22,46 @@ class AppDrawer extends StatelessWidget {
               color: Theme.of(context).primaryColor,
             ),
           ),
-          // InkWell(
-          //   onTap: () {
-          //     Navigator.of(context).pop();
-          //     Navigator.pushNamed(context, '/locationPage');
-          //   },
-          //   child: const ListTile(
-          //     leading: Icon(Icons.language),
-          //     title: Text(
-          //       'Definition from api',
-          //       style: TextStyle(),
-          //     ),
-          //   ),
-          // ),
-          // ListTile(
-          //   title: const Text('Eng_Uzb'),
-          //   trailing: Switch(
-          //     value: true,
-          //     onChanged: (value) {
-          //       //TODO
-          //     },
-          //   ),
-          // ),
           InkWell(
             onTap: () {
               Navigator.of(context).pop();
-              Navigator.push(
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LocalDictionaryPage(),
+                ),
+              );
+            },
+            child: const ListTile(
+              leading: Icon(Icons.home),
+              title: Text(
+                'Local Dictionary',
+                style: TextStyle(),
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NetworkDictionaryPage(),
+                ),
+              );
+            },
+            child: const ListTile(
+              leading: Icon(Icons.language),
+              title: Text(
+                'Definition from api',
+                style: TextStyle(),
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) => BlocProvider.value(
