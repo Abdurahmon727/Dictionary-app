@@ -59,7 +59,6 @@ flutter:
 assets:
   - assets/
   - assets/database/
-  - assets/icons/global
 
 fonts:
   - family: WorkSans
