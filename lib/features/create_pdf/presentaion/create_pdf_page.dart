@@ -1,3 +1,4 @@
+import '../../dictionary/presentation/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,6 +13,7 @@ class CreatePdfPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
       return Scaffold(
+        drawer: const AppDrawer(),
         appBar: AppBar(
           actions: [
             IconButton(
