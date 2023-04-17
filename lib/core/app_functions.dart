@@ -7,7 +7,7 @@ import 'package:pdf/widgets.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
-import '../features/network_dictionary/domain/entities/word.dart';
+import '../features/dictionary/domain/entities/word.dart';
 import 'helper.dart';
 
 abstract class AppFunctions {

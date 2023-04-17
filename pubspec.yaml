@@ -56,15 +56,16 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-assets:
-  - assets/
-  - assets/database/
+  assets:
+    - assets/
+    - assets/database/eng_dictionary.db
+    - assets/fonts/
 
-fonts:
-  - family: WorkSans
-    fonts:
-      - asset: assets/fonts/WorkSans-Bold.ttf
-      - asset: assets/fonts/WorkSans-Regular.ttf
+  fonts:
+    - family: WorkSans
+      fonts:
+        - asset: assets/fonts/WorkSans-Bold.ttf
+        - asset: assets/fonts/WorkSans-Regular.ttf
 
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

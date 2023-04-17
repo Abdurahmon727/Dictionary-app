@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../network_dictionary/domain/entities/word.dart';
+import '../../../dictionary/domain/entities/word.dart';
 
 part 'pdf_bloc.freezed.dart';
 part 'pdf_event.dart';

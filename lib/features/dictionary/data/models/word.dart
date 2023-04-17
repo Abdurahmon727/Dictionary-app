@@ -1,5 +1,6 @@
-import 'package:dictionary_app/features/network_dictionary/data/models/meaning.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'meaning.dart';
 
 part 'word.freezed.dart';
 
