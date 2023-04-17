@@ -12,11 +12,12 @@ const greyTextColor = _c989DAD;
 const lightGrey = _c5C5C5C;
 const bodyText1Color = _c111111;
 const brown = _cBF7C2E;
-const primary = _cF5BC41;
+const primary = _d902ee;
+const lightPrimary = _mediumOrchid;
 const accentGrey = _c1C2E45;
 const lightBrown = _cDECDB8;
 const arrowGrey = _c606060;
-
+const lightYellow = _ffd79d;
 const yellowShadow = _sunFlower;
 
 // Link: http://www.color-blindness.com/color-name-hue/
@@ -27,11 +28,11 @@ const _prussianBlue = Color(0XFF001444);
 const _black = Color(0XFF000000);
 const _cornflowerBlue = Color(0XFF0535DC);
 const _sunFlower = Color(0XFFE7B815);
-
-//const _manatee = Color(0XFF8C94A5);
+const _mediumOrchid = Color(0XFFD162DF);
 
 // Unnamed colors
-
+const _d902ee = Color(0xFFD902EE);
+const _ffd79d = Color(0XFFFFD79D);
 const _c989DAD = Color(0XFF989DAD);
 const _c494646 = Color(0XFF494646);
 const _c5C5C5C = Color(0XFF5C5C5C);

@@ -63,7 +63,8 @@ class WWordDefinition extends StatelessWidget {
                     for (int k = 0; k < entity.meanings[i].synonyms.length; k++)
                       Text(
                         entity.meanings[i].synonyms[k],
-                        style: const TextStyle(fontSize: 14),
+                        style:
+                            const TextStyle(fontSize: 14, color: yellowShadow),
                       ),
                   ],
                 ),

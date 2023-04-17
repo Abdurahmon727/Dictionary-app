@@ -5,7 +5,7 @@ import '../colors/colors.dart';
 class AppTheme {
   static ThemeData lightTheme() => ThemeData(
         fontFamily: 'WorkSans',
-        primaryColor: yellowShadow,
+        primaryColor: primary,
         brightness: Brightness.light,
         scaffoldBackgroundColor: background,
         textTheme: const TextTheme(
@@ -74,7 +74,7 @@ class AppTheme {
   static const bodyText2 = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w600,
-    color: brown,
+    color: lightPrimary,
   );
   static const caption = TextStyle(
     fontSize: 12,
