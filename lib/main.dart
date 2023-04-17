@@ -26,9 +26,10 @@ class App extends StatelessWidget {
       ],
       child: OverlaySupport.global(
         child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: AppTheme.lightTheme(),
-            home: NetworkDictionaryPage()),
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.lightTheme(),
+          home: const NetworkDictionaryPage(),
+        ),
       ),
     );
   }
