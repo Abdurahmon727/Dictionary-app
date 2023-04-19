@@ -134,8 +134,10 @@ class _LocalDictionaryPageState extends State<LocalDictionaryPage> {
               builder: (context, state) {
                 if (state.results.isNotEmpty) {
                   return ListView.separated(
-                      itemBuilder: (context, index) =>
-                          ListTile(title: Text(state.results[index].word)),
+                      itemBuilder: (context, index) => InkWell(
+                          onTap: () {},
+                          child:
+                              ListTile(title: Text(state.results[index].word))),
                       separatorBuilder: (_, __) => const SizedBox(height: 5),
                       itemCount: state.results.length);
                 } else {
