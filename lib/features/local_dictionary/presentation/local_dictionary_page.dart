@@ -1,3 +1,4 @@
+import 'package:dictionary_app/features/local_dictionary/presentation/pages/word.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,23 +39,28 @@ class _LocalDictionaryPageState extends State<LocalDictionaryPage> {
                 style: TextStyle(fontSize: 18),
               ),
               actions: [
-                Center(
-                  child: BlocBuilder<LocalDictionaryBloc, LocalDictionaryState>(
-                    builder: (context, state) {
-                      return Text(
-                        state.isEngUzb ? 'Eng_Uzb' : 'Uzb_Eng',
-                        style: const TextStyle(fontSize: 13),
-                      );
-                    },
+                InkWell(
+                  onTap: () {
+                    context
+                        .read<LocalDictionaryBloc>()
+                        .add(const LocalDictionaryEvent.changeLanguage());
+                  },
+                  child: Row(
+                    children: [
+                      BlocBuilder<LocalDictionaryBloc, LocalDictionaryState>(
+                        builder: (context, state) {
+                          return Text(
+                            state.isEngUzb ? 'Eng_Uzb' : 'Uzb_Eng',
+                            style: const TextStyle(fontSize: 13),
+                          );
+                        },
+                      ),
+                      const SizedBox(width: 5),
+                      const Icon(Icons.cached),
+                      const SizedBox(width: 10),
+                    ],
                   ),
-                ),
-                IconButton(
-                    onPressed: () {
-                      context
-                          .read<LocalDictionaryBloc>()
-                          .add(const LocalDictionaryEvent.changeLanguage());
-                    },
-                    icon: const Icon(Icons.cached))
+                )
               ],
               bottom: PreferredSize(
                 preferredSize: const Size.fromHeight(60),
@@ -135,7 +141,15 @@ class _LocalDictionaryPageState extends State<LocalDictionaryPage> {
                 if (state.results.isNotEmpty) {
                   return ListView.separated(
                       itemBuilder: (context, index) => InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    LocalWordPage(word: state.results[index]),
+                              ),
+                            );
+                          },
                           child:
                               ListTile(title: Text(state.results[index].word))),
                       separatorBuilder: (_, __) => const SizedBox(height: 5),
