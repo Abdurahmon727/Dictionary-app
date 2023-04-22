@@ -117,6 +117,11 @@ abstract class AppFunctions {
     await OpenFile.open(url);
   }
 
+  static String removeHtmlTags(String data) {
+    RegExp exp = RegExp(r"<[^>]*>", multiLine: true, caseSensitive: true);
+    return data.replaceAll(exp, '');
+  }
+
   static String getUniqueFileName(String fileName) {
     int suffix = 1;
     String baseName = fileName.split('.').first;

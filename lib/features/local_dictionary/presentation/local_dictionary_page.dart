@@ -1,4 +1,3 @@
-import 'package:dictionary_app/features/local_dictionary/presentation/pages/word.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,6 +8,7 @@ import '../../../../core/widgets/w_scale.dart';
 import '../../dictionary/presentation/widgets/drawer.dart';
 import '../data/repository/local_dic_repo_impl.dart';
 import 'bloc/local_dictionary_bloc.dart';
+import 'pages/word.dart';
 
 class LocalDictionaryPage extends StatefulWidget {
   const LocalDictionaryPage({super.key});

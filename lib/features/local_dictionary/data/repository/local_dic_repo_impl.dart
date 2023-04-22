@@ -18,12 +18,12 @@ class LocalDictionaryRepositoryImpl implements LocalDictionaryRepository {
     final String form = isEngUzb ? 'eng_uzb' : 'uzb_eng';
     final map = await db.rawQuery(
         "SELECT * FROM $form where $language like '%$query%' limit 50 offset ${50 * currentPage}");
-    print('repo: $query');
+
     final data = map
         .map((element) => LocalWord(
             id: element['_id'] as int,
             word: element[language] as String,
-            translation: element[language] as String,
+            translation: element[!isEngUzb ? 'eng' : 'uzb'] as String,
             pron: isEngUzb ? element['pron'] as String : null))
         .toList();
     return data;
