@@ -19,6 +19,13 @@ class LocalDictionaryPage extends StatefulWidget {
 
 class _LocalDictionaryPageState extends State<LocalDictionaryPage> {
   final TextEditingController searchController = TextEditingController();
+  @override
+  void initState() {
+    searchController.addListener(() {
+      setState(() {});
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,14 +122,16 @@ class _LocalDictionaryPageState extends State<LocalDictionaryPage> {
                             );
                           },
                           child: const Icon(Icons.mic, color: white)),
-                      suffixIcon: WScaleAnimation(
-                          onTap: () {
-                            searchController.clear();
-                            context
-                                .read<LocalDictionaryBloc>()
-                                .add(const LocalDictionaryEvent.search(''));
-                          },
-                          child: const Icon(Icons.clear, color: white)),
+                      suffixIcon: (searchController.text.isNotEmpty)
+                          ? WScaleAnimation(
+                              onTap: () {
+                                searchController.clear();
+                                context
+                                    .read<LocalDictionaryBloc>()
+                                    .add(const LocalDictionaryEvent.search(''));
+                              },
+                              child: const Icon(Icons.clear, color: white))
+                          : null,
                       focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: white),
                           borderRadius: BorderRadius.all(Radius.circular(15))),
