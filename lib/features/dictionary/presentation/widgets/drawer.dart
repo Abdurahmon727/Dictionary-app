@@ -1,4 +1,3 @@
-import 'package:dictionary_app/features/dictionary/presentation/pages/network_dictionary_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -6,6 +5,8 @@ import '../../../../core/data/service_locator.dart';
 import '../../../create_pdf/presentaion/bloc/pdf_bloc.dart';
 import '../../../create_pdf/presentaion/create_pdf_page.dart';
 import '../../../local_dictionary/presentation/local_dictionary_page.dart';
+import '../bloc/search_bloc.dart';
+import '../pages/network_dictionary_page.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -46,7 +47,17 @@ class AppDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const NetworkDictionaryPage(),
+                  builder: (context) => MultiBlocProvider(
+                    providers: [
+                      BlocProvider.value(
+                        value: sl<PdfBloc>(),
+                      ),
+                      BlocProvider.value(
+                        value: sl<SearchBloc>(),
+                      ),
+                    ],
+                    child: const NetworkDictionaryPage(),
+                  ),
                 ),
               );
             },

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dictionary_app/features/dictionary/presentation/bloc/search_bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:path/path.dart';
@@ -12,6 +13,7 @@ final sl = GetIt.instance;
 Future<void> initServiceLocator() async {
   await initDb();
   sl.registerLazySingleton(() => PdfBloc());
+  sl.registerLazySingleton(() => SearchBloc());
 }
 
 Future<void> initDb() async {
