@@ -5,7 +5,6 @@ import 'package:overlay_support/overlay_support.dart';
 import 'assets/theme/theme.dart';
 import 'core/bloc/show_pop_up/show_pop_up_bloc.dart';
 import 'core/data/service_locator.dart';
-import 'features/dictionary/presentation/pages/network_dictionary_page.dart';
 import 'features/local_dictionary/presentation/local_dictionary_page.dart';
 
 Future<void> main() async {
