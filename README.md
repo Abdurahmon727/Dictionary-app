@@ -24,23 +24,25 @@ Words can be searched by rest api also but only by eng-uzb. Words can be saved a
   
   
 ## API
-  used free namoz vaqtlari api (https://islomapi.uz/)
+  Free api https://api.dictionaryapi.dev/api/v2/entries/en/word from najot ta'lim
   	
 ## Technologies
 Project is created with:
 * Flutter: 3.3.9
 * Dart: 2.18.5 (stable)
 * Free sql database from najot ta'lim
-* Free api https://api.dictionaryapi.dev/api/v2/entries/en/word from najot ta'lim too
+
 
 ## Screenshots
-![Screenshot_20230329-132845](https://user-images.githubusercontent.com/92048454/228475649-8a7391ac-12ab-4b08-89f0-89a542a01738.png)
-![Screenshot_20230329-132850](https://user-images.githubusercontent.com/92048454/228475779-8dcf534e-93be-425a-a846-b1bbbd660af0.png)
-![Screenshot_20230329-132855](https://user-images.githubusercontent.com/92048454/228475806-99782b72-1f1a-45e5-aa80-2fdae7bb397e.png)
-![Screenshot_20230329-132905](https://user-images.githubusercontent.com/92048454/228475835-a43bcbf2-5929-43a4-9884-e8c24ace6904.png)
-![Screenshot_20230329-132926](https://user-images.githubusercontent.com/92048454/228475861-e90debfd-8539-437f-9f5c-0eea33038a13.png)
-![Screenshot_20230329-132934](https://user-images.githubusercontent.com/92048454/228475876-1fab7d82-2fd6-402c-bf99-de8cd5c9a941.png)
+![Screenshot_20230502-172644](https://user-images.githubusercontent.com/92048454/235709309-01018773-eabf-4684-a4bc-0cb2f7333fc0.png)
+![Screenshot_20230502-172720](https://user-images.githubusercontent.com/92048454/235709325-dd91d89f-8ae0-4aae-b2e9-80f050a8ae94.png)
+![Screenshot_20230502-172738](https://user-images.githubusercontent.com/92048454/235709347-8ed454d2-bb9e-41b0-b13e-1529cbd76e0f.png)
+![Screenshot_20230502-172749](https://user-images.githubusercontent.com/92048454/235709360-4cefd51d-86ce-4d50-bd8e-077be345e34a.png)
+![Screenshot_20230502-172759](https://user-images.githubusercontent.com/92048454/235709370-5e0b2774-8504-494e-ba57-26a73c1c7cef.png)
+![Screenshot_20230502-172814](https://user-images.githubusercontent.com/92048454/235709394-ba524ed0-72dd-4d6e-b697-9fba4d25c6cb.png)
+![Screenshot_20230502-172827](https://user-images.githubusercontent.com/92048454/235709413-cdff37f5-b836-423e-a1d3-ff86d5a3c32a.png)
+![Screenshot_20230502-172908](https://user-images.githubusercontent.com/92048454/235709432-c0368d56-8255-44f9-be97-98c01852351b.png)
+![photo_2023-05-02_20-14-37](https://user-images.githubusercontent.com/92048454/235709528-13b0917e-88af-49ff-8e52-2fada9f2c5b9.jpg)
 
-	
 ## Setup
 To run this project, install Flutter&Dart locally
