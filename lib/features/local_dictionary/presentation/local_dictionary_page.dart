@@ -39,137 +39,138 @@ class _LocalDictionaryPageState extends State<LocalDictionaryPage> {
       ],
       child: Builder(builder: (context) {
         return WScaffold(
-            drawer: const AppDrawer(),
-            appBar: AppBar(
-              title: const Text(
-                'Local Dictionary',
-                style: TextStyle(fontSize: 18),
-              ),
-              actions: [
-                InkWell(
-                  onTap: () {
+          drawer: const AppDrawer(),
+          appBar: AppBar(
+            title: const Text(
+              'Local Dictionary',
+              style: TextStyle(fontSize: 18),
+            ),
+            actions: [
+              InkWell(
+                onTap: () {
+                  context
+                      .read<LocalDictionaryBloc>()
+                      .add(const LocalDictionaryEvent.changeLanguage());
+                },
+                child: Row(
+                  children: [
+                    BlocBuilder<LocalDictionaryBloc, LocalDictionaryState>(
+                      builder: (context, state) {
+                        return Text(
+                          state.isEngUzb ? 'Eng_Uzb' : 'Uzb_Eng',
+                          style: const TextStyle(fontSize: 13),
+                        );
+                      },
+                    ),
+                    const SizedBox(width: 5),
+                    const Icon(Icons.cached),
+                    const SizedBox(width: 10),
+                  ],
+                ),
+              )
+            ],
+            bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(60),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  style: const TextStyle(color: white),
+                  onChanged: (value) {
                     context
                         .read<LocalDictionaryBloc>()
-                        .add(const LocalDictionaryEvent.changeLanguage());
+                        .add(LocalDictionaryEvent.search(value));
                   },
-                  child: Row(
-                    children: [
-                      BlocBuilder<LocalDictionaryBloc, LocalDictionaryState>(
-                        builder: (context, state) {
-                          return Text(
-                            state.isEngUzb ? 'Eng_Uzb' : 'Uzb_Eng',
-                            style: const TextStyle(fontSize: 13),
+                  autofocus: true,
+                  textInputAction: TextInputAction.search,
+                  cursorColor: white,
+                  controller: searchController,
+                  textCapitalization: TextCapitalization.none,
+                  decoration: InputDecoration(
+                    prefixIcon: WScaleAnimation(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(15))),
+                                content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Text('Tap to speak'),
+                                      const SizedBox(height: 10),
+                                      WScaleAnimation(
+                                        onTap: () async {
+                                          await AppFunctions.listenVoice(
+                                              (value) {
+                                            searchController.text = value;
+                                            Navigator.pop(context);
+                                          });
+                                        },
+                                        child: CircleAvatar(
+                                          backgroundColor:
+                                              Theme.of(context).primaryColor,
+                                          radius: 45,
+                                          child: const Icon(Icons.mic_none,
+                                              color: white, size: 30),
+                                        ),
+                                      ),
+                                    ]),
+                              );
+                            },
                           );
                         },
-                      ),
-                      const SizedBox(width: 5),
-                      const Icon(Icons.cached),
-                      const SizedBox(width: 10),
-                    ],
-                  ),
-                )
-              ],
-              bottom: PreferredSize(
-                preferredSize: const Size.fromHeight(60),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    style: const TextStyle(color: white),
-                    onChanged: (value) {
-                      context
-                          .read<LocalDictionaryBloc>()
-                          .add(LocalDictionaryEvent.search(value));
-                    },
-                    autofocus: true,
-                    textInputAction: TextInputAction.search,
-                    cursorColor: white,
-                    controller: searchController,
-                    textCapitalization: TextCapitalization.none,
-                    decoration: InputDecoration(
-                      prefixIcon: WScaleAnimation(
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
-                                  content: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const Text('Tap to speak'),
-                                        const SizedBox(height: 10),
-                                        WScaleAnimation(
-                                          onTap: () async {
-                                            await AppFunctions.listenVoice(
-                                                (value) {
-                                              searchController.text = value;
-                                              Navigator.pop(context);
-                                            });
-                                          },
-                                          child: CircleAvatar(
-                                            backgroundColor:
-                                                Theme.of(context).primaryColor,
-                                            radius: 45,
-                                            child: const Icon(Icons.mic_none,
-                                                color: white, size: 30),
-                                          ),
-                                        ),
-                                      ]),
-                                );
-                              },
-                            );
-                          },
-                          child: const Icon(Icons.mic, color: white)),
-                      suffixIcon: (searchController.text.isNotEmpty)
-                          ? WScaleAnimation(
-                              onTap: () {
-                                searchController.clear();
-                                context
-                                    .read<LocalDictionaryBloc>()
-                                    .add(const LocalDictionaryEvent.search(''));
-                              },
-                              child: const Icon(Icons.clear, color: white))
-                          : null,
-                      focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: white),
-                          borderRadius: BorderRadius.all(Radius.circular(15))),
-                      contentPadding: const EdgeInsets.only(left: 8),
-                      border: const OutlineInputBorder(
+                        child: const Icon(Icons.mic, color: white)),
+                    suffixIcon: (searchController.text.isNotEmpty)
+                        ? WScaleAnimation(
+                            onTap: () {
+                              searchController.clear();
+                              context
+                                  .read<LocalDictionaryBloc>()
+                                  .add(const LocalDictionaryEvent.search(''));
+                            },
+                            child: const Icon(Icons.clear, color: white))
+                        : null,
+                    focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: white),
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    contentPadding: const EdgeInsets.only(left: 8),
+                    border: const OutlineInputBorder(
+                      borderSide: BorderSide(color: white),
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
                     ),
                   ),
                 ),
               ),
             ),
-            body: BlocBuilder<LocalDictionaryBloc, LocalDictionaryState>(
-              builder: (context, state) {
-                if (state.results.isNotEmpty) {
-                  return ListView.separated(
-                      itemBuilder: (context, index) => InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    LocalWordPage(word: state.results[index]),
-                              ),
-                            );
-                          },
-                          child:
-                              ListTile(title: Text(state.results[index].word))),
-                      separatorBuilder: (_, __) => const SizedBox(height: 5),
-                      itemCount: state.results.length);
-                } else {
-                  return const Center(
-                    child: Text('nothing found :('),
-                  );
-                }
-              },
-            ));
+          ),
+          body: BlocBuilder<LocalDictionaryBloc, LocalDictionaryState>(
+            builder: (context, state) {
+              if (state.results.isNotEmpty) {
+                return ListView.separated(
+                    itemBuilder: (context, index) => InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  LocalWordPage(word: state.results[index]),
+                            ),
+                          );
+                        },
+                        child:
+                            ListTile(title: Text(state.results[index].word))),
+                    separatorBuilder: (_, __) => const SizedBox(height: 5),
+                    itemCount: state.results.length);
+              } else {
+                return const Center(
+                  child: Text('nothing found :('),
+                );
+              }
+            },
+          ),
+        );
       }),
     );
   }
