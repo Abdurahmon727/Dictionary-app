@@ -12,8 +12,8 @@ part 'search_state.dart';
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc()
       : super(SearchState(
-            resultEntity:
-                WordEntity(audio: '', meanings: [], phonetic: '', word: ''))) {
+            resultEntity: const WordEntity(
+                audio: '', meanings: [], phonetic: '', word: ''))) {
     on<_FindDefinition>((event, emit) async {
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
       final usecase = GetDefinitionUseCase();

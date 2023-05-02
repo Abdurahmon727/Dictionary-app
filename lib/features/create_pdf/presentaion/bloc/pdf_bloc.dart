@@ -17,7 +17,7 @@ class PdfBloc extends Bloc<PdfEvent, PdfState> {
         } else {
           final List<WordEntity> newWords = state.words + [event.wordEntity];
           emit(state.copyWith(words: newWords));
-          event.onSuccess('${event.wordEntity.word} is added to print');
+          event.onSuccess('Word "${event.wordEntity.word}" is added to print');
         }
       } else {
         event.onFailure('word doesn\'nt exist');
