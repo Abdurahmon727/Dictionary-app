@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 
 import '../../../../core/error/exeptions.dart';
-import '../../domain/entities/word.dart';
 import '../models/meaning.dart';
 import '../models/word.dart';
 

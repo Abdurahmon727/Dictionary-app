@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:open_file/open_file.dart';
+import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pdf_widgets;
 import 'package:pdf/widgets.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -24,72 +25,70 @@ abstract class AppFunctions {
 
   static Future<FileInfo> generatePdf(List<WordEntity> entities) async {
     final pdf = Document();
+    List<pdf_widgets.Widget> words = [];
 
     for (int page = 0; page < entities.length; page++) {
-      final onePage = pdf_widgets.Page(
-        margin: const pdf_widgets.EdgeInsets.all(5),
-        build: (pdf_widgets.Context context) {
-          return pdf_widgets.ListView(children: [
-            pdf_widgets.Column(
-                crossAxisAlignment: pdf_widgets.CrossAxisAlignment.start,
-                children: [
-                  pdf_widgets.Text(
-                    entities[page].word,
-                    style: const pdf_widgets.TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                  pdf_widgets.SizedBox(width: 8),
-                  pdf_widgets.Text(entities[page].phonetic ?? ''),
-                  for (int i = 0; i < entities[page].meanings.length; i++)
-                    pdf_widgets.Column(
-                      crossAxisAlignment: pdf_widgets.CrossAxisAlignment.start,
-                      children: [
-                        pdf_widgets.Text(
-                          '${entities[page].meanings[i].partOfSpeech}:',
-                          style: const pdf_widgets.TextStyle(fontSize: 14),
-                        ),
-                        for (int j = 0;
-                            j < entities[page].meanings[i].definitions.length;
-                            j++)
-                          pdf_widgets.Text(
-                            '[${j + 1}] ${entities[page].meanings[i].definitions[j]}',
-                            style: const pdf_widgets.TextStyle(fontSize: 14),
-                          ),
-                        pdf_widgets.SizedBox(height: 1),
-                        if (entities[page].meanings[i].synonyms.isNotEmpty)
-                          pdf_widgets.Wrap(
-                            spacing: 6,
-                            children: [
-                              pdf_widgets.Text(
-                                'Synonyms: ',
-                                style:
-                                    const pdf_widgets.TextStyle(fontSize: 14),
-                              ),
-                              for (int k = 0;
-                                  k <
-                                      entities[page]
-                                          .meanings[i]
-                                          .synonyms
-                                          .length;
-                                  k++)
-                                pdf_widgets.Text(
-                                  entities[page].meanings[i].synonyms[k],
-                                  style:
-                                      const pdf_widgets.TextStyle(fontSize: 14),
-                                ),
-                            ],
-                          ),
-                        pdf_widgets.SizedBox(height: 4),
-                      ],
-                    ),
-                ]),
-          ]);
-        },
+      words.add(
+        pdf_widgets.Text(
+          entities[page].word,
+          style: const pdf_widgets.TextStyle(
+            fontSize: 18,
+          ),
+        ),
       );
+      words.add(pdf_widgets.SizedBox(width: 8));
+      words.add(pdf_widgets.Text(entities[page].phonetic ?? ''));
+      for (int i = 0; i < entities[page].meanings.length; i++) {
+        words.add(pdf_widgets.Text(
+          '${entities[page].meanings[i].partOfSpeech}:',
+          style: const pdf_widgets.TextStyle(fontSize: 14),
+        ));
 
-      pdf.addPage(onePage);
+        for (int j = 0;
+            j < entities[page].meanings[i].definitions.length;
+            j++) {
+          words.add(
+            pdf_widgets.Text(
+              '[${j + 1}] ${entities[page].meanings[i].definitions[j]}',
+              style: const pdf_widgets.TextStyle(fontSize: 14),
+            ),
+          );
+        }
+
+        words.add(pdf_widgets.SizedBox(height: 1));
+        if (entities[page].meanings[i].synonyms.isNotEmpty) {
+          words.add(pdf_widgets.Wrap(
+            spacing: 6,
+            children: [
+              pdf_widgets.Text(
+                'Synonyms: ',
+                style: const pdf_widgets.TextStyle(fontSize: 14),
+              ),
+              for (int k = 0;
+                  k < entities[page].meanings[i].synonyms.length;
+                  k++)
+                pdf_widgets.Text(
+                  entities[page].meanings[i].synonyms[k],
+                  style: const pdf_widgets.TextStyle(fontSize: 14),
+                ),
+            ],
+          ));
+        }
+      }
+      words.add(pdf_widgets.SizedBox(height: 4));
+      //       ],
+      //     ),
+      // ],
     }
+    final completePdf = pdf_widgets.MultiPage(
+      pageFormat: PdfPageFormat.a4,
+      margin: const pdf_widgets.EdgeInsets.all(15),
+      build: (pdf_widgets.Context context) {
+        return words;
+      },
+    );
+
+    pdf.addPage(completePdf);
     return await saveDocument(name: 'Ultra Dictionary doc.pdf', pdf: pdf);
   }
 
