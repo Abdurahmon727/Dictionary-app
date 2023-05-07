@@ -23,10 +23,7 @@ class WWordDefinition extends StatelessWidget {
           children: [
             Text(
               entity.word,
-              style: const TextStyle(
-                color: black,
-                fontSize: 18,
-              ),
+              style: const TextStyle(color: black, fontSize: 18),
             ),
             const SizedBox(width: 8),
             Text(entity.phonetic ?? ''),

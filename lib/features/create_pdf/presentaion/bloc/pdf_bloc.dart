@@ -20,6 +20,7 @@ class PdfBloc extends Bloc<PdfEvent, PdfState> {
         } else {
           final List<AnyWord> newWords = state.words + [event.wordEntity];
           emit(state.copyWith(words: newWords));
+
           event.onSuccess('Word "${event.wordEntity.word}" is added to print');
         }
       } else {

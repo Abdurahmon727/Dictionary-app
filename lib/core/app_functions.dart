@@ -32,16 +32,17 @@ abstract class AppFunctions {
     for (int page = 0; page < entities.length; page++) {
       if (entities[page] is RemoteWordEntity) {
         final entity = entities[page] as RemoteWordEntity;
-        words.add(
+        words.add(pdf_widgets.Row(children: [
           pdf_widgets.Text(
             entity.word,
             style: const pdf_widgets.TextStyle(
               fontSize: 18,
             ),
           ),
-        );
-        words.add(pdf_widgets.SizedBox(width: 8));
-        words.add(pdf_widgets.Text(entity.phonetic ?? ''));
+          pdf_widgets.SizedBox(width: 5),
+          pdf_widgets.Text(entity.phonetic ?? '')
+        ]));
+
         for (int i = 0; i < entity.meanings.length; i++) {
           words.add(pdf_widgets.Text(
             '${entity.meanings[i].partOfSpeech}:',
