@@ -34,6 +34,7 @@ class _WScaffoldState extends State<WScaffold> {
   Widget build(BuildContext context) {
     return BlocConsumer<ShowPopUpBloc, ShowPopUpState>(
       listener: (context, state) {
+        print('listener started');
         if (state.showPopUp && state.popUpType == PopUpType.error) {
           showSimpleNotification(
             WPopUp(color: red, text: state.errorText),

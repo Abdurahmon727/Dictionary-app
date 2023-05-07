@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../assets/colors/colors.dart';
-import '../../../../core/app_functions.dart';
-import '../../../../core/bloc/show_pop_up/show_pop_up_bloc.dart';
-import '../../../../core/models/formz/formz_status.dart';
-import '../../../../core/pages/w_scaffold.dart';
-import '../../../../core/widgets/w_scale.dart';
-import '../../../create_pdf/presentaion/bloc/pdf_bloc.dart';
-import '../bloc/search_bloc.dart';
-import '../widgets/drawer.dart';
-import '../widgets/word_definition.dart';
+import '../../../assets/colors/colors.dart';
+import '../../../core/app_functions.dart';
+import '../../../core/bloc/show_pop_up/show_pop_up_bloc.dart';
+import '../../../core/models/formz/formz_status.dart';
+import '../../../core/pages/w_scaffold.dart';
+import '../../../core/widgets/w_scale.dart';
+import '../../create_pdf/presentaion/bloc/pdf_bloc.dart';
+import 'bloc/search_bloc.dart';
+import 'widgets/drawer.dart';
+import 'widgets/word_definition.dart';
 
 class NetworkDictionaryPage extends StatefulWidget {
   const NetworkDictionaryPage({super.key});

@@ -79,11 +79,23 @@ abstract class AppFunctions {
       } else {
         final entity = entities[page] as LocalWordEntity;
         words.add(pdf_widgets.Row(children: [
-          pdf_widgets.Text(entity.word),
+          pdf_widgets.Text(
+            entity.word,
+            style: const pdf_widgets.TextStyle(
+              fontSize: 18,
+            ),
+          ),
           pdf_widgets.SizedBox(width: 5),
-          if (entity.pron != null) pdf_widgets.Text(entity.pron!)
+          if (entity.pron != null)
+            pdf_widgets.Text(
+              entity.pron!,
+              style: const pdf_widgets.TextStyle(fontSize: 14),
+            )
         ]));
-        words.add(pdf_widgets.Text(removeHtmlTags(entity.translation)));
+        words.add(pdf_widgets.Text(
+          removeHtmlTags(entity.translation),
+          style: const pdf_widgets.TextStyle(fontSize: 14),
+        ));
         words.add(pdf_widgets.SizedBox(height: 4));
       }
     }

@@ -6,7 +6,7 @@ import '../../../create_pdf/presentaion/bloc/pdf_bloc.dart';
 import '../../../create_pdf/presentaion/create_pdf_page.dart';
 import '../../../local_dictionary/presentation/local_dictionary_page.dart';
 import '../bloc/search_bloc.dart';
-import '../pages/network_dictionary_page.dart';
+import '../network_dictionary_page.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});

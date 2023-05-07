@@ -1,9 +1,8 @@
-import 'package:dictionary_app/features/local_dictionary/domain/entity/local_word.dart';
-import 'package:dictionary_app/features/local_dictionary/presentation/pages/word.dart';
-import 'package:dictionary_app/features/remote_dictionary/domain/entities/any_word.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/app_functions.dart';
+import '../../../local_dictionary/domain/entity/local_word.dart';
+import '../../../remote_dictionary/domain/entities/any_word.dart';
 import '../../../remote_dictionary/domain/entities/remote_word.dart';
 import '../../../remote_dictionary/presentation/widgets/word_definition.dart';
 
