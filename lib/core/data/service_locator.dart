@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:dictionary_app/features/dictionary/presentation/bloc/search_bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../features/create_pdf/presentaion/bloc/pdf_bloc.dart';
+import '../../features/remote_dictionary/presentation/bloc/search_bloc.dart';
 
 final sl = GetIt.instance;
 

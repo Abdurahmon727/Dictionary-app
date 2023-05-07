@@ -1,16 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/app_functions.dart';
-import '../../data/model/word.dart';
+import '../../../../core/bloc/show_pop_up/show_pop_up_bloc.dart';
+import '../../../../core/pages/w_scaffold.dart';
+import '../../../create_pdf/presentaion/bloc/pdf_bloc.dart';
+import '../../domain/entity/local_word.dart';
 
-class LocalWordPage extends StatelessWidget {
-  const LocalWordPage({super.key, required this.word});
-  final LocalWord word;
+class LocalWordDefinitionPage extends StatelessWidget {
+  const LocalWordDefinitionPage({super.key, required this.word});
+  final LocalWordEntity word;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
+    return WScaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                context.read<PdfBloc>().add(PdfEvent.addWord(
+                      wordEntity: word,
+                      onFailure: (value) => context
+                          .read<ShowPopUpBloc>()
+                          .add(ShowPopUpEvent.showWarning(text: value)),
+                      onSuccess: (value) => context
+                          .read<ShowPopUpBloc>()
+                          .add(ShowPopUpEvent.showSuccess(text: value)),
+                    ));
+              },
+              icon: const Icon(Icons.picture_as_pdf_outlined))
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

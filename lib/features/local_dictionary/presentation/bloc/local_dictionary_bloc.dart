@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/data/storage_repository.dart';
-import '../../data/model/word.dart';
+import '../../domain/entity/local_word.dart';
 import '../../domain/repository/local_dic_repo.dart';
 
 part 'local_dictionary_bloc.freezed.dart';

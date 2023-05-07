@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../assets/colors/colors.dart';
 import '../../../../core/widgets/w_scale.dart';
-import '../../domain/entities/word.dart';
+import '../../domain/entities/remote_word.dart';
 
 class WWordDefinition extends StatelessWidget {
   const WWordDefinition({
@@ -11,7 +11,7 @@ class WWordDefinition extends StatelessWidget {
     required this.entity,
   }) : super(key: key);
 
-  final WordEntity entity;
+  final RemoteWordEntity entity;
 
   @override
   Widget build(BuildContext context) {

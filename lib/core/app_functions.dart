@@ -8,7 +8,9 @@ import 'package:pdf/widgets.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
-import '../features/dictionary/domain/entities/word.dart';
+import '../features/local_dictionary/domain/entity/local_word.dart';
+import '../features/remote_dictionary/domain/entities/any_word.dart';
+import '../features/remote_dictionary/domain/entities/remote_word.dart';
 import 'helper.dart';
 
 abstract class AppFunctions {
@@ -23,62 +25,67 @@ abstract class AppFunctions {
     return isAvailable;
   }
 
-  static Future<FileInfo> generatePdf(List<WordEntity> entities) async {
+  static Future<FileInfo> generatePdf(List<AnyWord> entities) async {
     final pdf = Document();
     List<pdf_widgets.Widget> words = [];
 
     for (int page = 0; page < entities.length; page++) {
-      words.add(
-        pdf_widgets.Text(
-          entities[page].word,
-          style: const pdf_widgets.TextStyle(
-            fontSize: 18,
-          ),
-        ),
-      );
-      words.add(pdf_widgets.SizedBox(width: 8));
-      words.add(pdf_widgets.Text(entities[page].phonetic ?? ''));
-      for (int i = 0; i < entities[page].meanings.length; i++) {
-        words.add(pdf_widgets.Text(
-          '${entities[page].meanings[i].partOfSpeech}:',
-          style: const pdf_widgets.TextStyle(fontSize: 14),
-        ));
-
-        for (int j = 0;
-            j < entities[page].meanings[i].definitions.length;
-            j++) {
-          words.add(
-            pdf_widgets.Text(
-              '[${j + 1}] ${entities[page].meanings[i].definitions[j]}',
-              style: const pdf_widgets.TextStyle(fontSize: 14),
+      if (entities[page] is RemoteWordEntity) {
+        final entity = entities[page] as RemoteWordEntity;
+        words.add(
+          pdf_widgets.Text(
+            entity.word,
+            style: const pdf_widgets.TextStyle(
+              fontSize: 18,
             ),
-          );
-        }
+          ),
+        );
+        words.add(pdf_widgets.SizedBox(width: 8));
+        words.add(pdf_widgets.Text(entity.phonetic ?? ''));
+        for (int i = 0; i < entity.meanings.length; i++) {
+          words.add(pdf_widgets.Text(
+            '${entity.meanings[i].partOfSpeech}:',
+            style: const pdf_widgets.TextStyle(fontSize: 14),
+          ));
 
-        words.add(pdf_widgets.SizedBox(height: 1));
-        if (entities[page].meanings[i].synonyms.isNotEmpty) {
-          words.add(pdf_widgets.Wrap(
-            spacing: 6,
-            children: [
+          for (int j = 0; j < entity.meanings[i].definitions.length; j++) {
+            words.add(
               pdf_widgets.Text(
-                'Synonyms: ',
+                '[${j + 1}] ${entity.meanings[i].definitions[j]}',
                 style: const pdf_widgets.TextStyle(fontSize: 14),
               ),
-              for (int k = 0;
-                  k < entities[page].meanings[i].synonyms.length;
-                  k++)
+            );
+          }
+
+          words.add(pdf_widgets.SizedBox(height: 1));
+          if (entity.meanings[i].synonyms.isNotEmpty) {
+            words.add(pdf_widgets.Wrap(
+              spacing: 6,
+              children: [
                 pdf_widgets.Text(
-                  entities[page].meanings[i].synonyms[k],
+                  'Synonyms: ',
                   style: const pdf_widgets.TextStyle(fontSize: 14),
                 ),
-            ],
-          ));
+                for (int k = 0; k < entity.meanings[i].synonyms.length; k++)
+                  pdf_widgets.Text(
+                    entity.meanings[i].synonyms[k],
+                    style: const pdf_widgets.TextStyle(fontSize: 14),
+                  ),
+              ],
+            ));
+          }
         }
+        words.add(pdf_widgets.SizedBox(height: 4));
+      } else {
+        final entity = entities[page] as LocalWordEntity;
+        words.add(pdf_widgets.Row(children: [
+          pdf_widgets.Text(entity.word),
+          pdf_widgets.SizedBox(width: 5),
+          if (entity.pron != null) pdf_widgets.Text(entity.pron!)
+        ]));
+        words.add(pdf_widgets.Text(removeHtmlTags(entity.translation)));
+        words.add(pdf_widgets.SizedBox(height: 4));
       }
-      words.add(pdf_widgets.SizedBox(height: 4));
-      //       ],
-      //     ),
-      // ],
     }
     final completePdf = pdf_widgets.MultiPage(
       pageFormat: PdfPageFormat.a4,

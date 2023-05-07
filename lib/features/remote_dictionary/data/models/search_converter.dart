@@ -1,5 +1,5 @@
 import '../../domain/entities/meaing.dart';
-import '../../domain/entities/word.dart';
+import '../../domain/entities/remote_word.dart';
 import 'meaning.dart';
 import 'word.dart';
 
@@ -10,8 +10,8 @@ abstract class SearchConverter {
         definitions: model.definitions,
         synonyms: model.synonyms,
       );
-  static WordEntity wordModelToEntity(WordModel model) {
-    return WordEntity(
+  static RemoteWordEntity wordModelToEntity(WordModel model) {
+    return RemoteWordEntity(
       word: model.word,
       phonetic: model.phonetic,
       audio: model.audio,

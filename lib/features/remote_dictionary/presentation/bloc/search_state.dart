@@ -4,7 +4,7 @@ part of 'search_bloc.dart';
 class SearchState with _$SearchState {
   factory SearchState({
     @Default(FormzStatus.pure) FormzStatus status,
-    required WordEntity resultEntity,
+    required RemoteWordEntity resultEntity,
     @Default('') String errorMessage,
   }) = _SearchState;
 }

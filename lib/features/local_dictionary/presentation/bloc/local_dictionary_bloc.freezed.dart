@@ -572,7 +572,7 @@ abstract class _Init implements LocalDictionaryEvent {
 
 /// @nodoc
 mixin _$LocalDictionaryState {
-  List<LocalWord> get results => throw _privateConstructorUsedError;
+  List<LocalWordEntity> get results => throw _privateConstructorUsedError;
   bool get isEngUzb => throw _privateConstructorUsedError;
   String get query => throw _privateConstructorUsedError;
   int get currentPage => throw _privateConstructorUsedError;
@@ -589,7 +589,10 @@ abstract class $LocalDictionaryStateCopyWith<$Res> {
       _$LocalDictionaryStateCopyWithImpl<$Res, LocalDictionaryState>;
   @useResult
   $Res call(
-      {List<LocalWord> results, bool isEngUzb, String query, int currentPage});
+      {List<LocalWordEntity> results,
+      bool isEngUzb,
+      String query,
+      int currentPage});
 }
 
 /// @nodoc
@@ -615,7 +618,7 @@ class _$LocalDictionaryStateCopyWithImpl<$Res,
       results: null == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<LocalWord>,
+              as List<LocalWordEntity>,
       isEngUzb: null == isEngUzb
           ? _value.isEngUzb
           : isEngUzb // ignore: cast_nullable_to_non_nullable
@@ -641,7 +644,10 @@ abstract class _$$_LocalDictionaryStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<LocalWord> results, bool isEngUzb, String query, int currentPage});
+      {List<LocalWordEntity> results,
+      bool isEngUzb,
+      String query,
+      int currentPage});
 }
 
 /// @nodoc
@@ -664,7 +670,7 @@ class __$$_LocalDictionaryStateCopyWithImpl<$Res>
       results: null == results
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<LocalWord>,
+              as List<LocalWordEntity>,
       isEngUzb: null == isEngUzb
           ? _value.isEngUzb
           : isEngUzb // ignore: cast_nullable_to_non_nullable
@@ -685,16 +691,16 @@ class __$$_LocalDictionaryStateCopyWithImpl<$Res>
 
 class _$_LocalDictionaryState implements _LocalDictionaryState {
   const _$_LocalDictionaryState(
-      {final List<LocalWord> results = const [],
+      {final List<LocalWordEntity> results = const [],
       this.isEngUzb = true,
       this.query = '',
       this.currentPage = 0})
       : _results = results;
 
-  final List<LocalWord> _results;
+  final List<LocalWordEntity> _results;
   @override
   @JsonKey()
-  List<LocalWord> get results {
+  List<LocalWordEntity> get results {
     if (_results is EqualUnmodifiableListView) return _results;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_results);
@@ -746,13 +752,13 @@ class _$_LocalDictionaryState implements _LocalDictionaryState {
 
 abstract class _LocalDictionaryState implements LocalDictionaryState {
   const factory _LocalDictionaryState(
-      {final List<LocalWord> results,
+      {final List<LocalWordEntity> results,
       final bool isEngUzb,
       final String query,
       final int currentPage}) = _$_LocalDictionaryState;
 
   @override
-  List<LocalWord> get results;
+  List<LocalWordEntity> get results;
   @override
   bool get isEngUzb;
   @override

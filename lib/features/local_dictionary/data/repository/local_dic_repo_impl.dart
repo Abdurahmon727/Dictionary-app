@@ -2,7 +2,7 @@ import 'package:sqflite/sqflite.dart';
 
 import '../../../../core/data/service_locator.dart';
 import '../../domain/repository/local_dic_repo.dart';
-import '../model/word.dart';
+import '../../domain/entity/local_word.dart';
 
 class LocalDictionaryRepositoryImpl implements LocalDictionaryRepository {
   late final Database db;
@@ -10,7 +10,7 @@ class LocalDictionaryRepositoryImpl implements LocalDictionaryRepository {
     db = sl<Database>();
   }
   @override
-  Future<List<LocalWord>> findWords(
+  Future<List<LocalWordEntity>> findWords(
       {required String query,
       required bool isEngUzb,
       required int currentPage}) async {
@@ -20,7 +20,7 @@ class LocalDictionaryRepositoryImpl implements LocalDictionaryRepository {
         "SELECT * FROM $form where $language like '%$query%' limit 50 offset ${50 * currentPage}");
 
     final data = map
-        .map((element) => LocalWord(
+        .map((element) => LocalWordEntity(
             id: element['_id'] as int,
             word: element[language] as String,
             translation: element[!isEngUzb ? 'eng' : 'uzb'] as String,

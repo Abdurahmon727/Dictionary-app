@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PdfEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(WordEntity wordEntity,
+    required TResult Function(AnyWord wordEntity,
             ValueChanged<String> onFailure, ValueChanged<String> onSuccess)
         addWord,
     required TResult Function() clearWords,
@@ -27,7 +27,7 @@ mixin _$PdfEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(WordEntity wordEntity, ValueChanged<String> onFailure,
+    TResult? Function(AnyWord wordEntity, ValueChanged<String> onFailure,
             ValueChanged<String> onSuccess)?
         addWord,
     TResult? Function()? clearWords,
@@ -36,7 +36,7 @@ mixin _$PdfEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(WordEntity wordEntity, ValueChanged<String> onFailure,
+    TResult Function(AnyWord wordEntity, ValueChanged<String> onFailure,
             ValueChanged<String> onSuccess)?
         addWord,
     TResult Function()? clearWords,
@@ -92,7 +92,7 @@ abstract class _$$_AddWordCopyWith<$Res> {
       __$$_AddWordCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {WordEntity wordEntity,
+      {AnyWord wordEntity,
       ValueChanged<String> onFailure,
       ValueChanged<String> onSuccess});
 }
@@ -115,7 +115,7 @@ class __$$_AddWordCopyWithImpl<$Res>
       wordEntity: null == wordEntity
           ? _value.wordEntity
           : wordEntity // ignore: cast_nullable_to_non_nullable
-              as WordEntity,
+              as AnyWord,
       onFailure: null == onFailure
           ? _value.onFailure
           : onFailure // ignore: cast_nullable_to_non_nullable
@@ -137,7 +137,7 @@ class _$_AddWord implements _AddWord {
       required this.onSuccess});
 
   @override
-  final WordEntity wordEntity;
+  final AnyWord wordEntity;
   @override
   final ValueChanged<String> onFailure;
   @override
@@ -174,7 +174,7 @@ class _$_AddWord implements _AddWord {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(WordEntity wordEntity,
+    required TResult Function(AnyWord wordEntity,
             ValueChanged<String> onFailure, ValueChanged<String> onSuccess)
         addWord,
     required TResult Function() clearWords,
@@ -186,7 +186,7 @@ class _$_AddWord implements _AddWord {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(WordEntity wordEntity, ValueChanged<String> onFailure,
+    TResult? Function(AnyWord wordEntity, ValueChanged<String> onFailure,
             ValueChanged<String> onSuccess)?
         addWord,
     TResult? Function()? clearWords,
@@ -198,7 +198,7 @@ class _$_AddWord implements _AddWord {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(WordEntity wordEntity, ValueChanged<String> onFailure,
+    TResult Function(AnyWord wordEntity, ValueChanged<String> onFailure,
             ValueChanged<String> onSuccess)?
         addWord,
     TResult Function()? clearWords,
@@ -248,11 +248,11 @@ class _$_AddWord implements _AddWord {
 
 abstract class _AddWord implements PdfEvent {
   const factory _AddWord(
-      {required final WordEntity wordEntity,
+      {required final AnyWord wordEntity,
       required final ValueChanged<String> onFailure,
       required final ValueChanged<String> onSuccess}) = _$_AddWord;
 
-  WordEntity get wordEntity;
+  AnyWord get wordEntity;
   ValueChanged<String> get onFailure;
   ValueChanged<String> get onSuccess;
   @JsonKey(ignore: true)
@@ -298,7 +298,7 @@ class _$_ClearWords implements _ClearWords {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(WordEntity wordEntity,
+    required TResult Function(AnyWord wordEntity,
             ValueChanged<String> onFailure, ValueChanged<String> onSuccess)
         addWord,
     required TResult Function() clearWords,
@@ -310,7 +310,7 @@ class _$_ClearWords implements _ClearWords {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(WordEntity wordEntity, ValueChanged<String> onFailure,
+    TResult? Function(AnyWord wordEntity, ValueChanged<String> onFailure,
             ValueChanged<String> onSuccess)?
         addWord,
     TResult? Function()? clearWords,
@@ -322,7 +322,7 @@ class _$_ClearWords implements _ClearWords {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(WordEntity wordEntity, ValueChanged<String> onFailure,
+    TResult Function(AnyWord wordEntity, ValueChanged<String> onFailure,
             ValueChanged<String> onSuccess)?
         addWord,
     TResult Function()? clearWords,
@@ -438,7 +438,7 @@ class _$_RemoveWord implements _RemoveWord {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(WordEntity wordEntity,
+    required TResult Function(AnyWord wordEntity,
             ValueChanged<String> onFailure, ValueChanged<String> onSuccess)
         addWord,
     required TResult Function() clearWords,
@@ -450,7 +450,7 @@ class _$_RemoveWord implements _RemoveWord {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(WordEntity wordEntity, ValueChanged<String> onFailure,
+    TResult? Function(AnyWord wordEntity, ValueChanged<String> onFailure,
             ValueChanged<String> onSuccess)?
         addWord,
     TResult? Function()? clearWords,
@@ -462,7 +462,7 @@ class _$_RemoveWord implements _RemoveWord {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(WordEntity wordEntity, ValueChanged<String> onFailure,
+    TResult Function(AnyWord wordEntity, ValueChanged<String> onFailure,
             ValueChanged<String> onSuccess)?
         addWord,
     TResult Function()? clearWords,
@@ -521,7 +521,7 @@ abstract class _RemoveWord implements PdfEvent {
 
 /// @nodoc
 mixin _$PdfState {
-  List<WordEntity> get words => throw _privateConstructorUsedError;
+  List<AnyWord> get words => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PdfStateCopyWith<PdfState> get copyWith =>
@@ -533,7 +533,7 @@ abstract class $PdfStateCopyWith<$Res> {
   factory $PdfStateCopyWith(PdfState value, $Res Function(PdfState) then) =
       _$PdfStateCopyWithImpl<$Res, PdfState>;
   @useResult
-  $Res call({List<WordEntity> words});
+  $Res call({List<AnyWord> words});
 }
 
 /// @nodoc
@@ -555,7 +555,7 @@ class _$PdfStateCopyWithImpl<$Res, $Val extends PdfState>
       words: null == words
           ? _value.words
           : words // ignore: cast_nullable_to_non_nullable
-              as List<WordEntity>,
+              as List<AnyWord>,
     ) as $Val);
   }
 }
@@ -567,7 +567,7 @@ abstract class _$$_PdfStateCopyWith<$Res> implements $PdfStateCopyWith<$Res> {
       __$$_PdfStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<WordEntity> words});
+  $Res call({List<AnyWord> words});
 }
 
 /// @nodoc
@@ -587,7 +587,7 @@ class __$$_PdfStateCopyWithImpl<$Res>
       words: null == words
           ? _value._words
           : words // ignore: cast_nullable_to_non_nullable
-              as List<WordEntity>,
+              as List<AnyWord>,
     ));
   }
 }
@@ -595,12 +595,12 @@ class __$$_PdfStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PdfState implements _PdfState {
-  const _$_PdfState({final List<WordEntity> words = const []}) : _words = words;
+  const _$_PdfState({final List<AnyWord> words = const []}) : _words = words;
 
-  final List<WordEntity> _words;
+  final List<AnyWord> _words;
   @override
   @JsonKey()
-  List<WordEntity> get words {
+  List<AnyWord> get words {
     if (_words is EqualUnmodifiableListView) return _words;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_words);
@@ -631,10 +631,10 @@ class _$_PdfState implements _PdfState {
 }
 
 abstract class _PdfState implements PdfState {
-  const factory _PdfState({final List<WordEntity> words}) = _$_PdfState;
+  const factory _PdfState({final List<AnyWord> words}) = _$_PdfState;
 
   @override
-  List<WordEntity> get words;
+  List<AnyWord> get words;
   @override
   @JsonKey(ignore: true)
   _$$_PdfStateCopyWith<_$_PdfState> get copyWith =>

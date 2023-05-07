@@ -222,7 +222,7 @@ abstract class _FindDefinition implements SearchEvent {
 /// @nodoc
 mixin _$SearchState {
   FormzStatus get status => throw _privateConstructorUsedError;
-  WordEntity get resultEntity => throw _privateConstructorUsedError;
+  RemoteWordEntity get resultEntity => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -236,7 +236,8 @@ abstract class $SearchStateCopyWith<$Res> {
           SearchState value, $Res Function(SearchState) then) =
       _$SearchStateCopyWithImpl<$Res, SearchState>;
   @useResult
-  $Res call({FormzStatus status, WordEntity resultEntity, String errorMessage});
+  $Res call(
+      {FormzStatus status, RemoteWordEntity resultEntity, String errorMessage});
 }
 
 /// @nodoc
@@ -264,7 +265,7 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
       resultEntity: null == resultEntity
           ? _value.resultEntity
           : resultEntity // ignore: cast_nullable_to_non_nullable
-              as WordEntity,
+              as RemoteWordEntity,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -281,7 +282,8 @@ abstract class _$$_SearchStateCopyWith<$Res>
       __$$_SearchStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({FormzStatus status, WordEntity resultEntity, String errorMessage});
+  $Res call(
+      {FormzStatus status, RemoteWordEntity resultEntity, String errorMessage});
 }
 
 /// @nodoc
@@ -307,7 +309,7 @@ class __$$_SearchStateCopyWithImpl<$Res>
       resultEntity: null == resultEntity
           ? _value.resultEntity
           : resultEntity // ignore: cast_nullable_to_non_nullable
-              as WordEntity,
+              as RemoteWordEntity,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -328,7 +330,7 @@ class _$_SearchState implements _SearchState {
   @JsonKey()
   final FormzStatus status;
   @override
-  final WordEntity resultEntity;
+  final RemoteWordEntity resultEntity;
   @override
   @JsonKey()
   final String errorMessage;
@@ -364,13 +366,13 @@ class _$_SearchState implements _SearchState {
 abstract class _SearchState implements SearchState {
   factory _SearchState(
       {final FormzStatus status,
-      required final WordEntity resultEntity,
+      required final RemoteWordEntity resultEntity,
       final String errorMessage}) = _$_SearchState;
 
   @override
   FormzStatus get status;
   @override
-  WordEntity get resultEntity;
+  RemoteWordEntity get resultEntity;
   @override
   String get errorMessage;
   @override
