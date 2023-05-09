@@ -97,10 +97,11 @@ class _NetworkDictionaryPageState extends State<NetworkDictionaryPage> {
                                           Navigator.pop(context);
                                         });
                                       },
-                                      child: const CircleAvatar(
-                                        backgroundColor: Colors.orange,
+                                      child: CircleAvatar(
+                                        backgroundColor:
+                                            Theme.of(context).primaryColor,
                                         radius: 45,
-                                        child: Icon(Icons.mic_none,
+                                        child: const Icon(Icons.mic_none,
                                             color: white, size: 30),
                                       ),
                                     ),
