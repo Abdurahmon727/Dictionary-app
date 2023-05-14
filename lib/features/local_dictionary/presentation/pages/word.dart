@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/app_functions.dart';
 import '../../../../core/bloc/show_pop_up/show_pop_up_bloc.dart';
-import '../../../../core/pages/w_scaffold.dart';
 import '../../../create_pdf/presentaion/bloc/pdf_bloc.dart';
 import '../../domain/entity/local_word.dart';
 
@@ -13,12 +12,28 @@ class LocalWordDefinitionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WScaffold(
+    return Scaffold(
       appBar: AppBar(
         actions: [
           IconButton(
               onPressed: () {
                 final entity = word;
+
+                // context.read<PdfBloc>().add(PdfEvent.addWord(
+                //       wordEntity: entity,
+                //       onFailure: (value) {
+                //         context
+                //             .read<ShowPopUpBloc>()
+                //             .add(ShowPopUpEvent.showWarning(text: value));
+                //         // Add showWarning event only
+                //       },
+                //       onSuccess: (value) {
+                //         context
+                //             .read<ShowPopUpBloc>()
+                //             .add(ShowPopUpEvent.showSuccess(text: value));
+                //         // Add showSuccess event only
+                //       },
+                //     ));
 
                 context.read<PdfBloc>().add(PdfEvent.addWord(
                       wordEntity: entity,

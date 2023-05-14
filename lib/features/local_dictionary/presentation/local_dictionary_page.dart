@@ -1,4 +1,3 @@
-import 'package:dictionary_app/features/create_pdf/presentaion/bloc/pdf_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,6 +6,7 @@ import '../../../../core/app_functions.dart';
 import '../../../../core/pages/w_scaffold.dart';
 import '../../../../core/widgets/w_scale.dart';
 import '../../../core/data/service_locator.dart';
+import '../../create_pdf/presentaion/bloc/pdf_bloc.dart';
 import '../../remote_dictionary/presentation/widgets/drawer.dart';
 import '../data/repository/local_dic_repo_impl.dart';
 import 'bloc/local_dictionary_bloc.dart';
