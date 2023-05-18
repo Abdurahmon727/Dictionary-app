@@ -18,23 +18,6 @@ class LocalWordDefinitionPage extends StatelessWidget {
           IconButton(
               onPressed: () {
                 final entity = word;
-
-                // context.read<PdfBloc>().add(PdfEvent.addWord(
-                //       wordEntity: entity,
-                //       onFailure: (value) {
-                //         context
-                //             .read<ShowPopUpBloc>()
-                //             .add(ShowPopUpEvent.showWarning(text: value));
-                //         // Add showWarning event only
-                //       },
-                //       onSuccess: (value) {
-                //         context
-                //             .read<ShowPopUpBloc>()
-                //             .add(ShowPopUpEvent.showSuccess(text: value));
-                //         // Add showSuccess event only
-                //       },
-                //     ));
-
                 context.read<PdfBloc>().add(PdfEvent.addWord(
                       wordEntity: entity,
                       onFailure: (value) => context
